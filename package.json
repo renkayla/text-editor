@@ -19,7 +19,14 @@
     "if-env": "^1.0.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.7",
+    "babel-loader": "^9.1.2",
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "nodemon": "^2.0.4",
+    "style-loader": "^3.3.3",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^7.0.0"
   }
 }
