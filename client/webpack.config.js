@@ -3,7 +3,9 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-module.exports = () => {
+module.exports = (env, argv) => {
+  const isWatchMode = argv.mode === 'development' && argv.watch;
+
   return {
     mode: 'development',
     entry: {
@@ -12,7 +14,7 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'client/dist'),
+      path: path.resolve(__dirname, './client/client/dist'),
       publicPath: '/',
     },
     plugins: [
@@ -36,10 +38,10 @@ module.exports = () => {
           },
         ],
       }),
-      new InjectManifest({
+      isWatchMode ? null : new InjectManifest({
         swSrc: './client/src-sw.js',
       }),
-    ],
+    ].filter(Boolean),
 
     module: {
       rules: [
