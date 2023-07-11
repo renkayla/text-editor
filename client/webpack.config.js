@@ -10,13 +10,14 @@ module.exports = (env, argv) => {
     mode: 'development',
     entry: {
       main: './client/src/js/index.js',
-      install: './client/src/js/install.js',
+      //install: './client/src/js/install.js',
     },
     output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, './client/client/dist'),
+      filename: '[name].[contenthash].js',
+      path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
     },
+    
     plugins: [
       new HtmlWebpackPlugin({
         template: './client/index.html',
